@@ -1,7 +1,8 @@
 public class InsertionSort {
     public static void insertionSort(int[] arr){
         int n = arr.length;
-        for (int i = 0; i < n; i++) {
+        // consider arr[0] is sorted
+         for (int i = 1; i < n; i++) {
             int curr = arr[i];
             int prevIndex = i-1;
             // finding out correct position to insert
