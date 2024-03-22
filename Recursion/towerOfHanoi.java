@@ -9,13 +9,12 @@ public class towerOfHanoi {
         //transfer top n-1 from src to helper using dest as "helper"
         towerOfHanoi(n-1,src,dest,helper);
         //transfer nth from src to dest
-        System.out.println("transfer disk "+ n + " from " + src + " to " + helper);
+        System.out.println("transfer disk "+ n + " from " + src + " to " + dest);
+        // transfer n-1 disk from helper to dest using src as 'helper'
         towerOfHanoi(n-1,helper,src,dest);
-
-
     }
     public static void main(String[] args) {
         int n = 3;
-        towerOfHanoi(n,"A","B","C");
+        towerOfHanoi(n,"S","H","D");
     }
 }
