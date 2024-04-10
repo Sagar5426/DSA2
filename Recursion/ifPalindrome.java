@@ -1,6 +1,5 @@
 public class ifPalindrome {
 
-
     public static boolean ifPalindrome(int i, String str){
         int size = str.length();
         if (i >= size/2) return true;

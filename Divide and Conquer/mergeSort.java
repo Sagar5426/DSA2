@@ -38,18 +38,15 @@ public class mergeSort {
         while(i <= mid){
             temp[k++] = arr[i++];
         }
-
         // Right part - if elements remaining in the right array
         while (j <= ei){
             temp[k++] = arr[j++];
         }
-
         // copy temp to original array
         for (int index = 0; index < temp.length; index++){
             arr[si + index] = temp[index];
         }
     }
-
     public static void main(String[] args) {
         int[] numbers = {6,3,9,5,2,8};
         mergeSort(numbers,0, numbers.length-1);
