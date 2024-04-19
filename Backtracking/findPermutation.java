@@ -1,6 +1,6 @@
 public class findPermutation {
 
-
+    //T.C = O(n * n!)
     public static void findPermutation(String str, String ans){
         if (str.length() == 0){
             System.out.println(ans);
