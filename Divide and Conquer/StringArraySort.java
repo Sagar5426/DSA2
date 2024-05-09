@@ -47,8 +47,8 @@ public class StringArraySort {
             temp[k++] = arr[j++];
         }
         // copy temp to original array
-        for (int index = 0; index < temp.length; index++){
-            arr[si + index] = temp[index];
+        for (k = 0, i = si; k < temp.length; k++, i++){
+            arr[i] = temp[k];
         }
     }
 }
