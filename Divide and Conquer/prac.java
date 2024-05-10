@@ -1,52 +1,41 @@
-import java.util.Arrays;
 
 public class prac {
 
+    public static int search(int arr[], int key, int si, int ei){
+        //base case
+        if(si > ei) return -1;
 
-    public static void mergeSort(String arr[], int si, int ei){
-        if (si >= ei) return;
         int mid = (si+ei)/2;
-        mergeSort(arr,si,mid);
-        mergeSort(arr,mid+1,ei);
-        merge(arr,si,mid,ei);
 
-    }
-
-    public static void merge(String arr[], int si, int mid, int ei){
-        String[] temp = new String[ei-si+1];
-        int i = si;
-        int j = mid+1;
-        int k = 0;
-
-        while (i <= mid && j <= ei){
-            if (arr[i].compareTo(arr[j]) < 0){
-                temp[k] = arr[i];
-                i++;
+        if(arr[mid] == key){
+            return mid;
+        }
+        //L1
+        if(arr[si] <= arr[mid]){
+            //left
+            if(arr[si] <= key && key <= arr[mid]){
+                return search(arr,key,si,mid-1);
             }else {
-                temp[k] = arr[j];
-                j++;
+                //right
+                return search(arr,key,mid+1,ei);
             }
-            k++;
+        } else{
+        //L2
+            if(arr[mid] <= key && key <= arr[ei]){
+                //right
+                return search(arr,key,mid+1,ei);
+            }else{
+                //left
+                return search(arr,key,si,mid-1);
+            }
         }
-
-        while(i <= mid){
-            temp[k++] = arr[i++];
-        }
-        while (j <= ei){
-            temp[k++] = arr[j++];
-        }
-        for (int index = 0; index < temp.length; index++) {
-            arr[si+index] = temp[index];
-        }
-
     }
 
 
 
     public static void main(String[] args) {
-        String[] arr = {"sun", "earth", "mars", "mercury"};
-        mergeSort(arr,0,arr.length-1);
-        System.out.println(Arrays.toString(arr));
+        int arr[] = {3,4,5,6,7,0,1,2};
+        System.out.println(search(arr,2,0,arr.length-1));
 
     }
 }
