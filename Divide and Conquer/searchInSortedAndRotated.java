@@ -39,3 +39,6 @@ public class searchInSortedAndRotated {
         System.out.println(keyIndex);
     }
 }
+// T.C : O(log n)
+// S.C : O(1)
+
