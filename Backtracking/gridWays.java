@@ -1,6 +1,6 @@
 public class gridWays {
 
-    // T.C = O(2 ^ n+m)
+    // T.C = O(2^(n + m))
     public static int gridWays(int i, int j, int n, int m){
         //base case
         if (i == n-1 && j == m-1){ //condition for last cell

@@ -5,7 +5,6 @@ public class mergeSort {
         }
         System.out.println();
     }
-
     public static void mergeSort(int[] arr, int si, int ei){
         //base case
         if (si >= ei) return;
@@ -14,7 +13,6 @@ public class mergeSort {
         mergeSort(arr,si,mid); // left part
         mergeSort(arr,mid+1,ei); // right part
         merge(arr,si,mid,ei);
-
     }
 
     public static void merge(int[] arr, int si, int mid , int ei){
