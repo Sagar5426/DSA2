@@ -22,9 +22,7 @@ public class Two_D_ArrayList {
 
         //manually printing
         printArrList(mainList);
-
     }
-
     private static void printArrList(ArrayList<ArrayList<Integer>> mainList) {
         for (int i = 0; i < mainList.size(); i++) {
             System.out.print("List "+ (i+1) +": ");

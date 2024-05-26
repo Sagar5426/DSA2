@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class pairSum_2 {
-
     public static int breakingPoint(ArrayList<Integer> list){
         for (int i = 0; i < list.size()-1; i++) {
             if (list.get(i) > list.get(i+1)){
@@ -10,7 +9,6 @@ public class pairSum_2 {
         }
         return -1;
     }
-
     public static boolean pairSum2(ArrayList<Integer> list, int target){
 
         int bp = breakingPoint(list);

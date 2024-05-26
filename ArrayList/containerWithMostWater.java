@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class containerWithMostWater {
-
     // Brute Force - O(n^2)
     public static int maxWater(ArrayList<Integer> height){
         int maxWater = 0;
@@ -41,8 +40,6 @@ public class containerWithMostWater {
     }
 
 
-
-
     public static void main(String[] args) {
         ArrayList<Integer> height = new ArrayList<>();
         //1, 8, 6, 2, 5, 4, 8, 3, 7
@@ -58,7 +55,5 @@ public class containerWithMostWater {
         height.add(7);
 
         System.out.println(optimisedMaxWater(height));
-
-
     }
 }

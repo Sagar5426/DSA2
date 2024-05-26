@@ -30,7 +30,7 @@ public class findSubSets {
         // Yes choice
         ans.append(str.charAt(i));
         findSubsets(str, ans, i + 1);
-        ans.deleteCharAt(ans.length() - 1);
+        ans.deleteCharAt(ans.length() - 1); //backtracking step
 
         // No Choice
         findSubsets(str, ans, i + 1);
