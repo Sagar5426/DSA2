@@ -120,12 +120,13 @@ public class LinkedList {
         System.out.print("List: ");
         Node temp = head;
         while (temp != null) {
-            System.out.print(temp.data + " ");
+            System.out.print(temp.data + "->");
             temp = temp.next;
         }
-        System.out.println();
+        System.out.println("null");
     }
 
+    // T.C = O(n)
     public int itrSearch(int key) {
         Node temp = head;
         int i = 0;
@@ -139,6 +140,94 @@ public class LinkedList {
         // not found
         return -1;
     }
+
+    // T.C = O(n)
+    public void reverse() {
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        // now curr is at null so
+        head = prev;
+    }
+
+    public void deleteNthFromEnd(int n) {
+        // n is index from right to left direction
+        // calculate size
+        int sz = 0;
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            sz++;
+        }
+
+        // if we want to delete head
+        if (n == sz) {
+            head = head.next; // remove First
+            return;
+        }
+
+        // sz-n
+        int i = 1;
+        int iToFind = sz - n; //node to delete
+        Node prev = head;
+        while (i < iToFind) { // traversing to get prev node
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+        return;
+    }
+
+    // helper function -> Note: Slow-Fast Approach used
+    public Node findMid(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;      //+1
+            fast = fast.next.next; //+2
+        }
+        return slow; // slow is my midNode
+    }
+
+    public boolean checkPalindrome() {
+        if (head == null || head.next == null) {
+            return true;
+        }
+        // step 1 - find mid
+        Node midNode = findMid(head);
+
+        // step 2 - reverse 2nd Half
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node right = prev; //right half head
+        Node left = head;
+
+        // step 3 - check left and right half
+        while (right != null) {
+            if (left.data != right.data) {
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
 
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
@@ -162,6 +251,9 @@ public class LinkedList {
         ll.printLL();
         System.out.println(ll.itrSearch(30));
 
+        System.out.println("------------------Reverse---------------");
 
+        ll.reverse();
+        ll.printLL();
     }
 }
