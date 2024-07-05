@@ -1,5 +1,5 @@
 
-public class LinkedList {
+public class MyLinkedList {
     public static Node head;
     public static Node tail;
     public static int size;
@@ -64,7 +64,7 @@ public class LinkedList {
         // reach at index-1 pos and then
         // first make new Node's next = temp.next and then
         // second temp.next = New Node
-        while (i < index-1) {
+        while (i < index - 1) {
             temp = temp.next;
             i++;
         }
@@ -73,10 +73,10 @@ public class LinkedList {
         temp.next = newNode;
     }
 
-    public int deleteAtFirst(){
+    public int deleteAtFirst() {
         if (size == 0) {
             System.out.println("Linked List is empty");
-            return Integer.MIN_VALUE; 
+            return Integer.MIN_VALUE;
         } else if (size == 1) {
             int val = head.data;
             head = tail = null;
@@ -100,7 +100,7 @@ public class LinkedList {
         }
         //prev : i = size-2
         Node prev = head;
-        for (int i = 0; i < size-2; i++) {
+        for (int i = 0; i < size - 2; i++) {
             prev = prev.next;
         }
         int val = prev.next.data;
@@ -176,10 +176,12 @@ public class LinkedList {
         // sz-n
         int i = 1;
         int iToFind = sz - n; //node to delete
+        System.out.println(sz + " - " + n + " = " + iToFind);
         Node prev = head;
         while (i < iToFind) { // traversing to get prev node
             prev = prev.next;
             i++;
+            System.out.println(i);
         }
         prev.next = prev.next.next;
         return;
@@ -228,9 +230,23 @@ public class LinkedList {
         return true;
     }
 
+    //
+    public static boolean isCycleNode() {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next; //+1
+            fast = fast.next.next; //+2
+            if (slow == fast) {
+                return true; // cycle exists
+            }
+        }
+        return false; // cycle doesn't exist
+    }
 
     public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
+        MyLinkedList ll = new MyLinkedList();
         ll.insertAtFirst(1);
         ll.insertAtLast(3);
         ll.insertAtIndex(2,1);
@@ -245,7 +261,7 @@ public class LinkedList {
         ll.printLL();
 
         // all prev nodes deleted
-        for (int i = 1; i <= 5 ; i++) {
+        for (int i = 1; i <= 6 ; i++) {
             ll.insertAtLast(i * 10);
         }
         ll.printLL();
@@ -253,7 +269,9 @@ public class LinkedList {
 
         System.out.println("------------------Reverse---------------");
 
-        ll.reverse();
+//        ll.reverse();
+        ll.deleteNthFromEnd(4);
+//        System.out.println("Check Palindrome: " + ll.checkPalindrome());
         ll.printLL();
     }
 }
