@@ -64,5 +64,8 @@ public class DoubleLL {
         doubleLL.insertAtFirst(2);
         doubleLL.insertAtFirst(1);
         doubleLL.print();
+
+        doubleLL.deleteAtFirst();
+        doubleLL.print();
     }
 }
