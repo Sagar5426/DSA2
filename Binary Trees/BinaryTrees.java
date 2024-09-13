@@ -1,5 +1,5 @@
+import java.util.*;
 public class BinaryTrees {
-
     public static class Node {
         int data;
         Node left;
@@ -24,7 +24,7 @@ public class BinaryTrees {
             newNode.left = buildTree(nodes);
             newNode.right = buildTree(nodes);
 
-            return newNode;
+            return newNode; //return starting root after end recursion call
         }
     }
 
@@ -45,8 +45,43 @@ public class BinaryTrees {
         inOrder(root.left);
         System.out.print(root.data+" ");
         inOrder(root.right);
+    }
 
+    public static void postOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.print(root.data+" ");
+    }
 
+    public static void levelOrder(Node root) {
+        if (root == null) return;
+
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+
+        while (!q.isEmpty()) { //run loop till queue is not empty
+            Node currNode = q.remove();
+            if (currNode == null) {
+                System.out.println();
+                if (q.isEmpty()) {
+                    break;
+                } else {
+                    q.add(null);
+                }
+            } else {
+                System.out.print(currNode.data+" ");
+                if (currNode.left != null) {
+                    q.add(currNode.left);
+                }
+                if (currNode.right != null) {
+                    q.add(currNode.right);
+                }
+            }
+        }
     }
 
 
@@ -56,11 +91,15 @@ public class BinaryTrees {
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
         System.out.println(root.data);
+
         System.out.print("Preorder Traversal: "); preorder(root);
-
         System.out.println();
-
         System.out.print("InOrder Traversal: "); inOrder(root);
+        System.out.println();
+        System.out.print("PostOrder Traversal: "); postOrder(root);
+        System.out.println();
+        System.out.println("Level Order Traversal: ");
+        levelOrder(root);
 
     }
 }
