@@ -52,13 +52,11 @@ public class StackUsingLL {
     }
 
     public static void main(String[] args) {
-
         Stack s = new Stack();
         s.push(4);
         s.push(3);
         s.push(2);
         s.push(1);
-
 
         s.printStack();
 
@@ -66,8 +64,5 @@ public class StackUsingLL {
         s.printStack();
 
         System.out.println("Peek at stack top: "+ s.peek());
-
-
-
     }
 }

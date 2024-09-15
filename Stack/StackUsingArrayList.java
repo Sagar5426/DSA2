@@ -48,8 +48,5 @@ public class StackUsingArrayList {
         s.pop();
         s.pop();
         s.printStack();
-
-
-
     }
 }
