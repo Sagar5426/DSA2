@@ -26,6 +26,20 @@ public class BinaryTrees {
 
             return newNode; //return starting root after end recursion call
         }
+
+        // Created for special case in SubTree as index is static in buildTree func can't make more than one tree
+        public static Node buildTree2(int nodes[], int ind) {
+            ind++;
+            if (nodes[ind] == -1) {
+                return null;
+            }
+
+            Node newNode = new Node(nodes[ind]);
+            newNode.left = buildTree2(nodes,ind);
+            newNode.right = buildTree2(nodes,ind);
+
+            return newNode; //return starting root after last recursion call
+        }
     }
 
     public static void preorder(Node root) {
