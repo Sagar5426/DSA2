@@ -1,9 +1,6 @@
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class QueueUsingCollectionFramework {
-
     // The Queue interface cannot be instantiated directly, as we cannot create objects of interfaces.
     // Instead, we create a Queue using the LinkedList class, which implements the Queue interface.
 

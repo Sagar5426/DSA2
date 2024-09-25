@@ -38,7 +38,6 @@ public class CircularQueue {
                 return -1;
             }
             int element = arr[front];
-
             // only one element is present
             if (front == rear) {
                 front = rear = -1;
