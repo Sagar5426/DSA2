@@ -49,6 +49,42 @@ public class Basic {
         }
     }
 
+    public static Node delete(Node root, int val) {
+        if (root.data > val) {
+            root.left = delete(root.left, val);
+        } else if (root.data < val) {
+            root.right = delete(root.right, val);
+        } else { //root.data == val
+            // case 1 : leaf node
+            if (root.left == null && root.right == null) {
+                return null;
+            }
+
+            // case 2: node with one child
+            if (root.left == null) {
+                return root.right; //if left is null that means right exist
+            }
+            else if (root.right == null) {
+                return root.left;
+            }
+
+            // case 3
+            Node IS = inorderSuccessor(root.right);
+            root.data = IS.data;
+            root.right = delete(root.right, IS.data);
+        }
+        return root;
+    }
+
+    //leftmost Node of right subtree is inorder successor
+    public static Node inorderSuccessor(Node root) {
+        while (root.left != null) {
+            root = root.left;
+        }
+
+        return root;
+    }
+
     public static void main(String[] args) {
         int values[] = {5, 1, 3, 4, 2, 7};
         Node root = null;
@@ -66,6 +102,11 @@ public class Basic {
         } else {
             System.out.println("Status: key not found");
         }
+
+        System.out.println("Deletion Code Output after 3 deleted");
+
+        delete(root, 3);
+        inorder(root);
 
 
     }
